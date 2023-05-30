@@ -1,0 +1,150 @@
+{
+  "menu" : [
+    {
+      "url": "/",
+      "name": "Home",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "dashboard-analytics"
+    } ,
+
+    {
+      "menuHeader": "Gestion de Base"
+    } ,
+    {
+      "name": "Formateur",
+      "icon": "menu-icon  bx bxs-user",
+      "slug": "formateur",
+      "submenu": [
+        {
+          "url": "/formateurs",
+          "name": "Afficher les Formateur",
+          "slug": "formateurs"
+        },
+        {
+          "url": "/ajouter/formateur",
+          "name": "Ajouter Un Formateur",
+          "slug": "add-formateur"
+        }
+      ]
+    } ,
+    {
+      "name": "élève",
+      "icon": "menu-icon fa-solid fa-user-graduate",
+      "slug": "eleve",
+      "submenu": [
+        {
+          "url": "/formateurs",
+          "name": "Afficher les élèves",
+          "slug": "eleves"
+        },
+        {
+          "url": "/ajouter/eleve",
+          "name": "Ajouter Un éléves",
+          "slug": "add-eleve"
+        }
+      ]
+    }
+    ,
+    {
+      "name": "Groupe",
+      "icon": "menu-icon fa-solid fa-people-group",
+      "slug": "groupe",
+      "submenu": [
+        {
+          "url": "/groupes",
+          "name": "Afficher les Groupes",
+          "slug": "groupes"
+        },
+        {
+          "url": "/ajouter/groupe",
+          "name": "Ajouter Un groupe",
+          "slug": "add-groupe"
+        }
+      ]
+    }
+    ,
+    {
+      "name": "Module",
+      "icon": "menu-icon fa-solid fa-book",
+      "slug": "module",
+      "submenu": [
+        {
+          "url": "/groupes",
+          "name": "Afficher les Modules",
+          "slug": "modules"
+        },
+        {
+          "url": "/ajouter/module",
+          "name": "Ajouter Un module",
+          "slug": "add-module"
+        }
+      ]
+    },
+
+
+    {
+      "name": "Les Notes",
+      "icon": "menu-icon fa-solid fa-award",
+      "slug": "Notes",
+      "submenu": [
+        {
+          "url": "/notes",
+          "name": "Afficher les notes",
+          "slug": "notes"
+        },
+        {
+          "url": "/ajouter/notes",
+          "name": "Ajouter Un note",
+          "slug": "add-note"
+        }
+      ]
+    },
+    {
+      "menuHeader": "Gestion du temps"
+    },
+    {
+      "name": "Séance",
+      "icon": "menu-icon  fa-solid fa-chalkboard",
+      "slug": "séance",
+      "submenu": [
+        {
+          "url": "/sénace",
+          "name": "Afficher les séances",
+          "slug": "séance"
+        },
+        {
+          "url": "/ajouter/séance",
+          "name": "Ajouter Un séance",
+          "slug": "add-séance"
+        }
+      ]
+    }
+    ,
+    {
+      "name": "emploi du temps",
+      "icon": "menu-icon  fa-solid fa-calendar-days",
+      "slug": "séance",
+      "submenu": [
+        {
+          "url": "/emploi",
+          "name": "Afficher les emplois du temps",
+          "slug": "séance"
+        },
+        {
+          "url": "/ajouter/emploi",
+          "name": "Ajouter Un emploi du temps",
+          "slug": "add-emploi"
+        }
+      ]
+    }
+    ,
+    {
+      "menuHeader": "Parametre"
+    },
+    {
+      "name": "exporter les données",
+      "icon": "menu-icon  fa-solid fa-file-export",
+      "slug": "export"
+    }
+  ]
+}

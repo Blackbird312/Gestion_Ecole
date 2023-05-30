@@ -1,81 +1,73 @@
-@extends('layouts/commonMaster' )
+@extends('layouts/contentNavbarLayout')
 
-@php
-/* Display elements */
-$contentNavbar = true;
-$containerNav = ($containerNav ?? 'container-xxl');
-$isNavbar = ($isNavbar ?? true);
-$isMenu = ($isMenu ?? true);
-$isFlex = ($isFlex ?? false);
-$isFooter = ($isFooter ?? true);
-$customizerHidden = ($customizerHidden ?? '');
-$pricingModal = ($pricingModal ?? false);
-
-/* HTML Classes */
-$navbarDetached = 'navbar-detached';
-
-/* Content classes */
-$container = ($container ?? 'container-xxl');
-
-@endphp
-
-@section('layoutContent')
-<div class="layout-wrapper layout-content-navbar {{ $isMenu ? '' : 'layout-without-menu' }}">
-  <div class="layout-container">
-
-    @if ($isMenu)
-    @include('layouts/sections/menu/verticalMenu')
-    @endif
+@section('title', 'Dashboard - Home')
 
 
-    <!-- Layout page -->
-    <div class="layout-page">
-      <!-- BEGIN: Navbar-->
-      @if ($isNavbar)
-      @include('layouts/sections/navbar/navbar')
-      @endif
-      <!-- END: Navbar-->
+@section('content')
 
-
-      <!-- Content wrapper -->
-      <div class="content-wrapper">
-
-        <!-- Content -->
-        @if ($isFlex)
-        <div class="{{$container}} d-flex align-items-stretch flex-grow-1 p-0">
-          @else
-          <div class="{{$container}} flex-grow-1 container-p-y">
-            @endif
-
-            @yield('content')
-
-            <!-- pricingModal -->
-            @if ($pricingModal)
-            @include('_partials/_modals/modal-pricing')
-            @endif
-            <!--/ pricingModal -->
-
+<div class="row">
+  <div class="col-lg-3 col-md-6 col-12 mb-3">
+    <div class="card">
+          <div class="card-body">
+            <div class="card-title d-flex align-items-start justify-content-between">
+              <div class="avatar flex-shrink-0">
+                <img src="{{asset('assets/img/icons/unicons/formateur.jpg')}}" alt="chart success" class="rounded">
+              </div>
+            </div>
+                <span class="fw-semibold d-block mb-1">Formateur</span> 
+            <h3 class="card-title mb-2">15</h3>
           </div>
-          <!-- / Content -->
-
-          <!-- Footer -->
-          @if ($isFooter)
-          @include('layouts/sections/footer/footer')
-          @endif
-          <!-- / Footer -->
-          <div class="content-backdrop fade"></div>
         </div>
-        <!--/ Content wrapper -->
-      </div>
-      <!-- / Layout page -->
-    </div>
-
-    @if ($isMenu)
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
-    @endif
-    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
-    <div class="drag-target"></div>
   </div>
-  <!-- / Layout wrapper -->
-  @endsection
+
+  <div class="col-lg-3 col-md-6 col-12 mb-3">
+    <div class="card">
+          <div class="card-body">
+            <div class="card-title d-flex align-items-start justify-content-between">
+              <div class="avatar flex-shrink-0">
+                <img src="{{asset('assets/img/icons/unicons/student.png')}}" alt="chart success" class="rounded">
+              </div>
+            </div>
+                <span class="fw-semibold d-block mb-1">Student</span> 
+            <h3 class="card-title mb-2">15</h3>
+          </div>
+        </div>
+  </div>
+
+<div class="col-lg-3 col-md-6 col-12 mb-3">
+    <div class="card">
+          <div class="card-body">
+            <div class="card-title d-flex align-items-start justify-content-between">
+              <div class="avatar flex-shrink-0">
+                <img src="{{asset('assets/img/icons/unicons/groupes.png')}}" alt="chart success" class="rounded">
+              </div>
+            </div>
+                <span class="fw-semibold d-block mb-1">Groupe</span> 
+            <h3 class="card-title mb-2">15</h3>
+          </div>
+        </div>
+  </div>
+
+  <div class="col-lg-3 col-md-6 col-12 mb-3">
+    <div class="card">
+          <div class="card-body">
+            <div class="card-title d-flex align-items-start justify-content-between">
+              <div class="avatar flex-shrink-0">
+                <img src="{{asset('assets/img/icons/unicons/module.png')}}" alt="chart success" class="rounded">
+              </div>
+            </div>
+                <span class="fw-semibold d-block mb-1">Module</span> 
+            <h3 class="card-title mb-2">15</h3>
+          </div>
+        </div>
+  </div>
+  
+
+  
+  
+
+
+
+ </div>
+
+@endsection

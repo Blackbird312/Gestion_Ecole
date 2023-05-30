@@ -24,7 +24,7 @@
     {{-- menu headers --}}
     @if (isset($menu->menuHeader))
     <li class="menu-header small text-uppercase">
-      <span cla ss="menu-header-text">{{ $menu->menuHeader }}</span>
+      <span class="menu-header-text">{{ $menu->menuHeader }}</span>
     </li>
 
     @else
