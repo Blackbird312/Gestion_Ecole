@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,27 @@ use Illuminate\Support\Facades\Route;
 $controller_path = 'App\Http\Controllers';
 
 // Main Page Route
-Route::get('/', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
+Route::get('/', [adminController::class , 'index'])->name('dashboard');
+
+// admin side Formateur
+// => afficher tous les formateur
+Route::get('/formateurs', [adminController::class , 'index_formateur'])->name('formateurs');
+// => affiche la formulaire pour ajouter un Prof
+Route::get('/ajouter/formateur', [adminController::class , 'create_formateur'])->name('create.formateurs');
+Route::post('/ajouter/formateur', [adminController::class , 'store_formateur'])->name('store.formateurs');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // layout
 Route::get('/layouts/without-menu', $controller_path . '\layouts\WithoutMenu@index')->name('layouts-without-menu');
@@ -81,7 +102,3 @@ Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tab
 
 
 
-//  my test
-Route::get('/taha' , function() {
-  return view('taha.Home');
-});
