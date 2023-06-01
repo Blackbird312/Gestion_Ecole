@@ -36,7 +36,7 @@ $navbarDetached = ($navbarDetached ?? '');
 
       <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 
-        <h2 class="">gestion d'une école</h2>
+        <h2 class="m-0">GESTION D'ECOLE</h2>
         <!-- /Search -->
         <ul class="navbar-nav flex-row align-items-center ms-auto">
 

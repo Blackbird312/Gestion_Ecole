@@ -26,15 +26,22 @@ Route::get('/formateurs', [adminController::class , 'index_formateur'])->name('f
 Route::get('/ajouter/formateur', [adminController::class , 'create_formateur'])->name('create.formateurs');
 Route::post('/ajouter/formateur', [adminController::class , 'store_formateur'])->name('store.formateurs');
 
+// => afficher tous les eleves
+Route::get('/eleves', [adminController::class , 'index_eleve'])->name('eleves');
+// => ajouter un eleve
+Route::get('/ajouter/eleve', [adminController::class , 'create_eleve'])->name('create.eleve');
 
+// => afficher tous les groupes
+Route::get('/groupes', [adminController::class , 'index_groupes'])->name('groupes');
+Route::get('/ajouter/groupe', [adminController::class , 'create_groupe'])->name('create.groupe');
 
+// => afficher tous les modules
+Route::get('/modules', [adminController::class , 'index_modules'])->name('modules');
+Route::get('/ajouter/module', [adminController::class , 'create_module'])->name('create.module');
 
-
-
-
-
-
-
+// => afficher tous les notes
+Route::get('/notes', [adminController::class , 'index_notes'])->name('notes');
+Route::get('/ajouter/note', [adminController::class , 'create_note'])->name('create.note');
 
 
 

@@ -25,6 +25,47 @@ class adminController extends Controller
     public function store_formateur(){
       return "test" ;
     }
+    // ===== end  Formateur    =====
+
+     // view all eleves
+     public function index_eleve(){
+      return view("admin.eleves.AfficherEleve") ;
+    }
+
+      // view eleves to add eleve
+    public function create_eleve(){
+      return view("admin.eleves.AjouterEleve") ;
+    }
+
+    // view all groupes
+    public function index_groupes(){
+    return view("admin.groupes.AfficherGroupes") ;
+    }
+
+    // view groupes to add groupe
+  public function create_groupe(){
+    return view("admin.groupes.AjouterGroupe") ;
+    }
+
+    // view all modules
+    public function index_modules(){
+      return view("admin.module.AfficherModules") ;
+    }
+
+      // view modules to add module
+    public function create_module(){
+      return view("admin.module.AjouterModule") ;
+    }
+
+    // view all modules
+    public function index_notes(){
+      return view("admin.notes.AfficherNotes") ;
+    }
+
+      // view modules to add module
+    public function create_note(){
+      return view("admin.notes.AjouterNote") ;
+    }
 
 
 
@@ -34,6 +75,4 @@ class adminController extends Controller
 
 
 
-
-        // ===== end  Formateur    =====
 }

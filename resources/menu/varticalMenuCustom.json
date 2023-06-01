@@ -33,7 +33,7 @@
       "slug": "eleve",
       "submenu": [
         {
-          "url": "/formateurs",
+          "url": "/eleves",
           "name": "Afficher les élèves",
           "slug": "eleves"
         },
@@ -69,7 +69,7 @@
       "slug": "module",
       "submenu": [
         {
-          "url": "/groupes",
+          "url": "/modules",
           "name": "Afficher les Modules",
           "slug": "modules"
         },
@@ -93,7 +93,7 @@
           "slug": "notes"
         },
         {
-          "url": "/ajouter/notes",
+          "url": "/ajouter/note",
           "name": "Ajouter Un note",
           "slug": "add-note"
         }
