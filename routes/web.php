@@ -25,6 +25,9 @@ Route::get('/formateurs', [adminController::class , 'index_formateur'])->name('f
 // => affiche la formulaire pour ajouter un Prof
 Route::get('/ajouter/formateur', [adminController::class , 'create_formateur'])->name('create.formateurs');
 Route::post('/ajouter/formateur', [adminController::class , 'store_formateur'])->name('store.formateurs');
+Route::delete('/formateur/{id}' , [adminController::class , "delete_formateur"])->name("delete.formateurs");
+Route::get('/formateur/{id}/edit' , [adminController::class , "edit_formateur"])->name("edit.formateurs");
+Route::put('/formateur/{id}' , [adminController::class , "update_formateur"])->name("update.formateurs");
 
 // => afficher tous les eleves
 Route::get('/eleves', [adminController::class , 'index_eleve'])->name('eleves');
@@ -42,6 +45,62 @@ Route::get('/ajouter/module', [adminController::class , 'create_module'])->name(
 // => afficher tous les notes
 Route::get('/notes', [adminController::class , 'index_notes'])->name('notes');
 Route::get('/ajouter/note', [adminController::class , 'create_note'])->name('create.note');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
