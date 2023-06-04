@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Formateur extends Model
+class Module extends Model
 {
     use HasFactory;
 
     protected $fillable = [
       'nom',
-      'prenom',
-      'email',
-      'pass',
+      'coef',
+      'formateur_id',
   ];
 
-  public function modules()
-  {
-      return $this->belongsTo(Module::class);
-  }
 
+
+  public function formateurs(){
+    return $this->hasOne(Formateur::class);
+  }
 }

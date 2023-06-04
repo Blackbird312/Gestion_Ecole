@@ -60,7 +60,7 @@
             <div class="col-sm-10">
               <div class="input-group input-group-merge">
                 <span class="input-group-text"><i class="bx bx-lock"></i></span>
-                <input name="password" type="password" id="basic-icon-default-email" class="form-control" placeholder="password" aria-label="john.doe" aria-describedby="basic-icon-default-email2" />
+                <input name="pass" type="password" id="basic-icon-default-email" class="form-control" placeholder="password" aria-label="john.doe" aria-describedby="basic-icon-default-email2" />
               </div>
               @error('pass')
                 {{$message}}
