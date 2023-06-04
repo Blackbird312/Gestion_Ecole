@@ -24,7 +24,7 @@ Route::get('/', [adminController::class , 'index'])->name('dashboard');
 Route::get('/formateurs', [adminController::class , 'index_formateur'])->name('formateurs');
 // => affiche la formulaire pour ajouter un Prof
 Route::get('/ajouter/formateur', [adminController::class , 'create_formateur'])->name('create.formateurs');
-Route::post('/ajouter/formateur', [adminController::class , 'store_formateur'])->name('store.formateurs');
+Route::post('/store/formateur', [adminController::class , 'store_formateur'])->name('store.formateurs');
 Route::delete('/formateur/{id}' , [adminController::class , "delete_formateur"])->name("delete.formateurs");
 Route::get('/formateur/{id}/edit' , [adminController::class , "edit_formateur"])->name("edit.formateurs");
 Route::put('/formateur/{id}' , [adminController::class , "update_formateur"])->name("update.formateurs");
@@ -41,6 +41,8 @@ Route::get('/ajouter/groupe', [adminController::class , 'create_groupe'])->name(
 // => afficher tous les modules
 Route::get('/modules', [adminController::class , 'index_modules'])->name('modules');
 Route::get('/ajouter/module', [adminController::class , 'create_module'])->name('create.module');
+Route::post('/store/module', [adminController::class , 'store_module'])->name('store.module');
+
 
 // => afficher tous les notes
 Route::get('/notes', [adminController::class , 'index_notes'])->name('notes');

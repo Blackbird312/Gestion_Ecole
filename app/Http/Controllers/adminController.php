@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Formateur;
+use App\Models\Module;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class adminController extends Controller
@@ -89,7 +91,7 @@ class adminController extends Controller
         "nom" => $request->nom,
         "prenom" => $request->prenom,
         "email" => $request->email ,
-        "pass" =>$pass 
+        "pass" =>Hash::make($pass ),
       ])->save() ;
     };
 
@@ -100,6 +102,8 @@ class adminController extends Controller
 
   // ===== end  Formateur    =====
 
+
+    // ===== start  Eleve    =====
   // view all eleves
   public function index_eleve()
   {
@@ -111,6 +115,10 @@ class adminController extends Controller
   {
     return view("admin.eleves.AjouterEleve");
   }
+
+    // ===== end  eleve    =====
+
+      // ===== start  Groupe    =====
 
   // view all groupes
   public function index_groupes()
@@ -124,27 +132,69 @@ class adminController extends Controller
     return view("admin.groupes.AjouterGroupe");
   }
 
+    // ===== end  Groupe    =====
+
+
+      // ===== start  Module    =====
+
   // view all modules
   public function index_modules()
   {
-    return view("admin.module.AfficherModules");
+
+
+    $modules = DB::table('modules')
+    ->join('formateurs', 'modules.formateur_id', '=', 'formateurs.id')
+    ->select('modules.*', 'formateurs.nom as nomF' , 'formateurs.prenom as prenomF')
+    ->get();
+
+
+
+
+    return view("admin.module.AfficherModules" , compact("modules") );
   }
 
   // view modules to add module
   public function create_module()
   {
-    return view("admin.module.AjouterModule");
+    $formateurs = Formateur::all();
+    return view("admin.module.AjouterModule", compact("formateurs"));
   }
 
-  // view all modules
+  // store module
+  public function store_module(Request $request)
+  {
+
+    $request->validate([
+      "nom" => ['required'] ,
+      "cof" => ['required' , "numeric" , "min:1" , "max:5"] ,
+      "formateur" => ['required']
+    ]) ;
+
+    Module::create([
+      "nom" => $request->nom ,
+      "coef" => $request->cof ,
+      "formateur_id" =>$request->formateur
+    ]);
+
+    return redirect()->route('modules')->with('success' , "your module created Successfully");
+  }
+
+    // ===== end  module    =====
+
+
+      // ===== start  notes    =====
+  // view all notes
   public function index_notes()
   {
     return view("admin.notes.AfficherNotes");
   }
 
-  // view modules to add module
+  // view note to add note
   public function create_note()
   {
     return view("admin.notes.AjouterNote");
   }
+
+
+    // ===== end  note    =====
 }
