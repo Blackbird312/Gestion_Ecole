@@ -33,16 +33,25 @@ Route::put('/formateur/{id}' , [adminController::class , "update_formateur"])->n
 Route::get('/eleves', [adminController::class , 'index_eleve'])->name('eleves');
 // => ajouter un eleve
 Route::get('/ajouter/eleve', [adminController::class , 'create_eleve'])->name('create.eleve');
+Route::post('/store/eleve', [adminController::class , 'store_eleve'])->name('store.eleve');
+Route::delete('/delete/eleve/{id}', [adminController::class , 'delete_eleve'])->name('delete.eleve');
+Route::get('/edit/eleve/{id}' , [adminController::class , 'edit_eleve'])->name("edit.eleve");
+Route::put('/update/eleve/{id}' , [adminController::class , 'update_eleve'])->name("update.eleve");
+
 
 // => afficher tous les groupes
 Route::get('/groupes', [adminController::class , 'index_groupes'])->name('groupes');
 Route::get('/ajouter/groupe', [adminController::class , 'create_groupe'])->name('create.groupe');
+Route::post('/store/groupe' , [adminController::class , 'store_groupe'])->name("store.groupe") ;
+Route::delete('/delete/groupe/{id}' , [adminController::class , 'delete_groupe'])->name("delete.groupe") ;
 
 // => afficher tous les modules
 Route::get('/modules', [adminController::class , 'index_modules'])->name('modules');
 Route::get('/ajouter/module', [adminController::class , 'create_module'])->name('create.module');
 Route::post('/store/module', [adminController::class , 'store_module'])->name('store.module');
-
+Route::delete('/delete/moduel/{id}' , [adminController::class , 'destroy_module'] )->name("delete.moduel") ;
+Route::get("/module/edit/{id}" , [adminController::class , "edit_module"])->name("edit.module") ;
+Route::put("/module/update/{id}" , [adminController::class , "update_module"])->name("upadate.module") ;
 
 // => afficher tous les notes
 Route::get('/notes', [adminController::class , 'index_notes'])->name('notes');
