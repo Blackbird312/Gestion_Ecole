@@ -19,4 +19,8 @@ class Eleve extends Model
   public function groupe(){
     return $this->hasOne(Groupe::class , "id") ;
   }
+
+  public function note(){
+    return $this->belongsTo(Note::class);
+  }
 }

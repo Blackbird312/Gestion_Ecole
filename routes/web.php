@@ -56,6 +56,9 @@ Route::put("/module/update/{id}" , [adminController::class , "update_module"])->
 // => afficher tous les notes
 Route::get('/notes', [adminController::class , 'index_notes'])->name('notes');
 Route::get('/ajouter/note', [adminController::class , 'create_note'])->name('create.note');
+Route::post('/store/note', [adminController::class , 'store_note'])->name('store.note');
+Route::get('/note/{id}', [adminController::class , 'note'])->name('note');
+Route::delete('/note/{id}', [adminController::class , 'delete_note'])->name('delete.note');
 
 
 
