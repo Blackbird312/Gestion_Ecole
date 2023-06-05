@@ -20,4 +20,8 @@ class Module extends Model
   public function formateurs(){
     return $this->hasOne(Formateur::class);
   }
+
+  public function note(){
+    return $this->belongsTo(Note::class);
+  }
 }
