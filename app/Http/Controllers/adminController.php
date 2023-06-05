@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Eleve;
 use App\Models\Formateur;
+use App\Models\Groupe;
 use App\Models\Module;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 class adminController extends Controller
 {
@@ -107,15 +110,96 @@ class adminController extends Controller
   // view all eleves
   public function index_eleve()
   {
-    return view("admin.eleves.AfficherEleve");
+
+
+    $eleves = DB::table('eleves')
+    ->join('groupes', 'eleves.groupe_id', '=', 'groupes.id')
+    ->select('eleves.*', 'groupes.nom as nomG' )
+    ->get();
+
+
+
+    return view("admin.eleves.AfficherEleve" , compact('eleves'));
   }
 
   // view eleves to add eleve
   public function create_eleve()
   {
-    return view("admin.eleves.AjouterEleve");
+    $groupes = Groupe::all();
+
+    return view("admin.eleves.AjouterEleve" , compact('groupes'));
   }
 
+  // store eleve
+  public function store_eleve(Request $request){
+
+    $request->validate([
+      "nom" => ["required"] ,
+      "prenom" => ["required"] ,
+      "email" => ["required" , "email"] ,
+      "groupe" => ['required']
+    ]) ;
+
+
+
+    Eleve::create([
+      'nom' => $request->nom ,
+      'prenom' => $request->prenom ,
+      'email' => $request->email ,
+      'groupe_id' => $request->groupe ,
+    ]) ;
+
+
+
+
+    return redirect()->route("eleves")->with('success' , "eleve created Successfully") ;
+  }
+
+  // delete eleve
+
+  public function delete_eleve($id){
+    $eleve = Eleve::findOrFail($id);
+
+    $eleve->delete();
+
+    return redirect()->route("eleves")->with('success' , 'eleve deleted Successfully');
+  }
+
+
+  // edit eleve
+  public function edit_eleve($id) {
+    $eleve = Eleve::findOrFail($id);
+
+    $groupes = Groupe::all() ;
+
+    return view('admin.eleves.editEleve' , compact("eleve" , "groupes")) ;
+  }
+
+  // update eleve
+
+  public function update_eleve(Request $request ){
+
+    $request->validate([
+      "nom" => ["required"] ,
+      "prenom" => ["required"] ,
+      "email" => ["required" , "email"] ,
+      "groupe" => ['required']
+    ]) ;
+
+    $eleve = Eleve::findOrFail($request->id);
+
+    $eleve->fill([
+      "nom" => $request->nom ,
+      "prenom" => $request->prenom ,
+      "email" => $request->email ,
+      "groupe_id" => $request->groupe
+    ])->save() ;
+
+
+
+
+    return redirect()->route("eleves")->with("success" , "eleve update successfully") ;
+  }
     // ===== end  eleve    =====
 
       // ===== start  Groupe    =====
@@ -123,13 +207,37 @@ class adminController extends Controller
   // view all groupes
   public function index_groupes()
   {
-    return view("admin.groupes.AfficherGroupes");
+    $groupes = Groupe::all();
+    return view("admin.groupes.AfficherGroupes" , compact('groupes'));
   }
 
   // view groupes to add groupe
   public function create_groupe()
   {
     return view("admin.groupes.AjouterGroupe");
+  }
+
+  // store Groupe
+  public function store_groupe(Request $request){
+
+    $request->validate([
+      "nom" => ['required', "min:2"]
+    ]);
+
+    Groupe::create([
+      "nom" => $request->nom
+    ]);
+
+    return redirect()->route("groupes")->with("success" , "Groupe Create Successfully") ;
+  }
+
+  // delete groupe
+  public function delete_groupe($id){
+    $groupe = Groupe::findOrFail($id);
+
+    $groupe->delete();
+
+    return redirect()->route("groupes")->with('success' , "groupe Has Deleted Successfully") ;
   }
 
     // ===== end  Groupe    =====
@@ -178,6 +286,52 @@ class adminController extends Controller
 
     return redirect()->route('modules')->with('success' , "your module created Successfully");
   }
+
+  // delete module
+  public function destroy_module($id){
+
+    $module = Module::findOrFail($id);
+    $module->delete() ;
+
+    return redirect()->route('modules')->with('success' , "Module Has deleted Successfully") ;
+  }
+
+  // update module
+  public function edit_module($id){
+    $module = Module::findOrFail($id) ;
+
+    $formateurs = Formateur::all() ;
+
+
+    return view("admin.module.editModule" , compact('module' , "formateurs"));
+  }
+  // update module
+  public function update_module(Request $request){
+    $request->validate([
+      "nom" => ['required'],
+      "cof" => ['required'],
+      "formateur" => ['required'],
+    ]) ;
+
+
+
+    $module = Module::findOrFail($request->id) ;
+
+
+
+    if($module){
+      $module->fill([
+        "nom" => $request->nom,
+        "coef" => $request->cof,
+        "formateur_id" => $request->formateur ,
+      ])->save() ;
+    };
+
+    return redirect()->route('modules')->with('success' , "Moduel updated Successfully") ;
+
+
+  }
+
 
     // ===== end  module    =====
 
