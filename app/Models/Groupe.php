@@ -20,5 +20,10 @@ class Groupe extends Model
   }
 
 
+  public function seance(){
+    return $this->belongsTo(seance::class);
+  }
+
+
 
 }

@@ -21,4 +21,8 @@ class Formateur extends Model
       return $this->belongsTo(Module::class);
   }
 
+  public function seance(){
+    return $this->belongsTo(seance::class);
+  }
+
 }

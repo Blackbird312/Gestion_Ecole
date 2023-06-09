@@ -14,8 +14,8 @@
                 <img src="{{asset('assets/img/icons/unicons/formateur.jpg')}}" alt="chart success" class="rounded">
               </div>
             </div>
-                <span class="fw-semibold d-block mb-1">Formateur</span> 
-            <h3 class="card-title mb-2">15</h3>
+                <span class="fw-semibold d-block mb-1">Formateur</span>
+            <h3 class="card-title mb-2">{{$formateurs->count()}}</h3>
           </div>
         </div>
   </div>
@@ -28,8 +28,8 @@
                 <img src="{{asset('assets/img/icons/unicons/student.png')}}" alt="chart success" class="rounded">
               </div>
             </div>
-                <span class="fw-semibold d-block mb-1">Student</span> 
-            <h3 class="card-title mb-2">15</h3>
+                <span class="fw-semibold d-block mb-1">Student</span>
+            <h3 class="card-title mb-2">{{$eleves->count()}}</h3>
           </div>
         </div>
   </div>
@@ -42,8 +42,8 @@
                 <img src="{{asset('assets/img/icons/unicons/groupes.png')}}" alt="chart success" class="rounded">
               </div>
             </div>
-                <span class="fw-semibold d-block mb-1">Groupe</span> 
-            <h3 class="card-title mb-2">15</h3>
+                <span class="fw-semibold d-block mb-1">Groupe</span>
+            <h3 class="card-title mb-2">{{$groupes->count()}}</h3>
           </div>
         </div>
   </div>
@@ -56,15 +56,15 @@
                 <img src="{{asset('assets/img/icons/unicons/module.png')}}" alt="chart success" class="rounded">
               </div>
             </div>
-                <span class="fw-semibold d-block mb-1">Module</span> 
-            <h3 class="card-title mb-2">15</h3>
+                <span class="fw-semibold d-block mb-1">Module</span>
+            <h3 class="card-title mb-2">{{$modules->count()}}</h3>
           </div>
         </div>
   </div>
-  
 
-  
-  
+
+
+
 
 
 

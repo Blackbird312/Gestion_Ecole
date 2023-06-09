@@ -108,7 +108,7 @@
       "slug": "séance",
       "submenu": [
         {
-          "url": "/sénace",
+          "url": "/seance",
           "name": "Afficher les séances",
           "slug": "séance"
         },
@@ -120,31 +120,19 @@
       ]
     }
     ,
+    
     {
       "name": "emploi du temps",
       "icon": "menu-icon  fa-solid fa-calendar-days",
       "slug": "séance",
       "submenu": [
         {
-          "url": "/emploi",
+          "url": "/fullcalender",
           "name": "Afficher les emplois du temps",
           "slug": "séance"
-        },
-        {
-          "url": "/ajouter/emploi",
-          "name": "Ajouter Un emploi du temps",
-          "slug": "add-emploi"
         }
       ]
     }
-    ,
-    {
-      "menuHeader": "Parametre"
-    },
-    {
-      "name": "exporter les données",
-      "icon": "menu-icon  fa-solid fa-file-export",
-      "slug": "export"
-    }
+    
   ]
 }
