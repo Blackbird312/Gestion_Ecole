@@ -24,4 +24,8 @@ class Module extends Model
   public function note(){
     return $this->belongsTo(Note::class);
   }
+
+  public function seance(){
+    return $this->belongsTo(seance::class);
+  }
 }

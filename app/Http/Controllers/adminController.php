@@ -7,16 +7,22 @@ use App\Models\Formateur;
 use App\Models\Groupe;
 use App\Models\Module;
 use App\Models\Note;
+use App\Models\seance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 class adminController extends Controller
 {
   public function index()
   {
-    return view('admin.Home');
+    $formateurs = Formateur::all() ;
+    $eleves = Eleve::all() ;
+    $groupes = Groupe::all() ;
+    $modules = Module::all() ;
+
+    return view('admin.Home' , compact("formateurs" , "eleves" , "groupes" , "modules"));
   }
 
   // =====  Formateur    =====
@@ -415,4 +421,36 @@ class adminController extends Controller
 
 
   // ===== end  note    =====
+
+
+    // ===== start  seance    =====
+
+    public function seance_index(){
+
+      $seancess = DB::table('seances')
+      ->join('groupes' , "seances.id_groupe" , "=" , "groupes.id")
+      ->join('formateurs' , "seances.id_formateur" , "=" , "formateurs.id")
+      ->join('modules' , "seances.id_module" , "=" , "modules.id")
+      ->select("seances.id" , "groupes.nom as nomG" , "formateurs.nom as nomF" , "formateurs.prenom" , "modules.nom" )
+      ->get();
+
+
+
+
+      return view("admin.seance.seances" , compact("seancess"));
+    }
+
+
+    public function delete_seance($id){
+
+      $seances = seance::findOrFail($id);
+
+
+      $seances->delete();
+
+
+      return redirect()->route('seances')->with('success' , "seance deleted successfully");
+    }
+      // ===== end  seance    =====
+
 }

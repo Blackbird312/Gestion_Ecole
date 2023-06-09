@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\FullCalenderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,10 +62,17 @@ Route::get('/note/{id}', [adminController::class , 'note'])->name('note');
 Route::delete('/note/{id}', [adminController::class , 'delete_note'])->name('delete.note');
 
 
+// => seance
+Route::get("/seances" , [adminController::class , "seance_index"])->name("seances");
+Route::get("/delete/seances/{id}" , [adminController::class , "delete_seance"])->name("delete.seance");
 
 
 
 
+Route::controller(FullCalenderController::class)->group(function(){
+  Route::get('fullcalender', 'index');
+  Route::post('fullcalenderAjax', 'ajax');
+});
 
 
 
